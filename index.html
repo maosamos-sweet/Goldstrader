@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>GoldPulse AI | Professional Trading Dashboard</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Geist:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/>
 <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -20,7 +17,6 @@
             color: #e1e2eb;
             overflow: hidden;
         }
-        /* Custom scrollbar for terminal feel */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #10131a; }
         ::-webkit-scrollbar-thumb { background: #32353c; border-radius: 3px; }
@@ -42,97 +38,28 @@
             border-color: #484F58;
         }
     </style>
-<!-- Tailwind Configuration -->
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "on-tertiary-fixed": "#400009",
                         "surface-container": "#1d2026",
-                        "on-tertiary-container": "#c0002e",
                         "on-background": "#e1e2eb",
-                        "tertiary-fixed": "#ffdad9",
                         "surface-tint": "#e9c400",
                         "surface-container-highest": "#32353c",
-                        "surface-bright": "#363940",
-                        "on-secondary-fixed": "#002113",
-                        "surface-container-low": "#191c22",
-                        "on-primary-fixed": "#221b00",
-                        "on-error": "#690005",
-                        "inverse-primary": "#705d00",
-                        "on-tertiary-fixed-variant": "#920021",
                         "on-surface": "#e1e2eb",
                         "on-secondary": "#003824",
-                        "tertiary-fixed-dim": "#ffb3b3",
-                        "primary-fixed": "#ffe16d",
-                        "surface-variant": "#32353c",
-                        "tertiary-container": "#ffcecd",
-                        "on-secondary-fixed-variant": "#005236",
-                        "on-primary-container": "#705e00",
-                        "on-tertiary": "#680014",
-                        "outline-variant": "#4d4732",
-                        "on-error-container": "#ffdad6",
-                        "outline": "#999077",
-                        "inverse-on-surface": "#2e3037",
-                        "secondary-fixed": "#6ffbbe",
-                        "secondary-container": "#00a572",
                         "background": "#10131a",
-                        "on-primary": "#3a3000",
                         "surface": "#10131a",
-                        "inverse-surface": "#e1e2eb",
                         "error": "#ffb4ab",
-                        "surface-dim": "#10131a",
-                        "on-secondary-container": "#00311f",
+                        "secondary-container": "#00a572",
                         "primary-container": "#ffd700",
                         "surface-container-lowest": "#0b0e14",
                         "primary": "#fff6df",
-                        "surface-container-high": "#272a31",
-                        "tertiary": "#fff4f3",
                         "secondary": "#4edea3",
                         "error-container": "#93000a",
-                        "primary-fixed-dim": "#e9c400",
-                        "secondary-fixed-dim": "#4edea3",
-                        "on-primary-fixed-variant": "#544600",
                         "on-surface-variant": "#d0c6ab"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "margin-desktop": "32px",
-                        "lg": "32px",
-                        "gutter": "16px",
-                        "base": "4px",
-                        "md": "24px",
-                        "xl": "48px",
-                        "margin-mobile": "16px",
-                        "sm": "16px",
-                        "xs": "8px"
-                    },
-                    "fontFamily": {
-                        "headline-sm": ["Geist"],
-                        "data-ticker": ["JetBrains Mono"],
-                        "body-md": ["Inter"],
-                        "display-lg": ["Geist"],
-                        "body-lg": ["Inter"],
-                        "headline-md": ["Geist"],
-                        "label-caps": ["JetBrains Mono"],
-                        "body-sm": ["Inter"]
-                    },
-                    "fontSize": {
-                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                        "data-ticker": ["16px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
-                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
-                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
                     }
                 },
             },
@@ -140,248 +67,111 @@
     </script>
 </head>
 <body class="flex h-screen overflow-hidden">
-<!-- SideNavBar Implementation -->
-<aside class="bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-surface-variant flex flex-col h-screen w-64 left-0 top-0 shrink-0">
-<div class="py-md px-sm flex flex-col h-full">
-<div class="mb-xl px-xs">
-<h1 class="font-headline-md text-headline-md font-bold text-primary">GoldPulse AI</h1>
-<p class="font-label-caps text-label-caps text-on-surface-variant opacity-70">Pro Trader Edition</p>
+
+<aside class="bg-surface-container-lowest border-r border-surface-variant flex flex-col h-screen w-64 left-0 top-0 shrink-0">
+<div class="py-md px-sm flex flex-col h-full p-4">
+<div class="mb-6">
+<h1 class="text-2xl font-bold text-primary">GoldPulse AI</h1>
+<p class="text-xs font-mono text-on-surface-variant opacity-70 tracking-widest">Pro Trader Edition</p>
 </div>
-<nav class="flex-grow space-y-xs">
-<a class="flex items-center gap-sm px-sm py-xs text-primary border-r-2 border-primary hover:bg-surface-container-highest transition-colors active:opacity-80 active:scale-95 transition-all" href="#">
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-primary border-r-2 border-primary bg-surface-container-highest/50 transition-all" href="#">
 <span class="material-symbols-outlined filled-icon">dashboard</span>
-<span class="font-body-md text-body-md">Dashboard</span>
+<span>Dashboard</span>
 </a>
-<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
 <span class="material-symbols-outlined">signal_cellular_alt</span>
-<span class="font-body-md text-body-md">Live Signals</span>
-</a>
-<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
-<span class="material-symbols-outlined">calendar_today</span>
-<span class="font-body-md text-body-md">Economic Calendar</span>
-</a>
-<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
-<span class="material-symbols-outlined">school</span>
-<span class="font-body-md text-body-md">Tutorials</span>
-</a>
-<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
-<span class="material-symbols-outlined">settings</span>
-<span class="font-body-md text-body-md">Settings</span>
+<span>Live Signals</span>
 </a>
 </nav>
-<div class="mt-auto space-y-sm">
-<button class="w-full bg-primary-container text-on-primary-container py-xs px-sm rounded-lg font-bold hover:brightness-110 transition-all flex items-center justify-center gap-xs">
-<span class="material-symbols-outlined filled-icon text-[18px]">workspace_premium</span>
-                    Upgrade to Pro
-                </button>
-<div class="pt-md border-t border-surface-variant space-y-xs">
-<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">help</span>
-<span class="font-body-md text-body-md">Support</span>
-</a>
-<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">logout</span>
-<span class="font-body-md text-body-md">Sign Out</span>
-</a>
-</div>
-</div>
 </div>
 </aside>
-<!-- Main Content Wrapper -->
+
 <div class="flex-grow flex flex-col overflow-hidden">
-<!-- TopNavBar Implementation -->
-<header class="bg-surface-container dark:bg-surface-container border-b border-surface-variant flex justify-between items-center px-lg w-full sticky top-0 z-50 h-16 shrink-0">
-<div class="flex items-center gap-lg">
-<div class="flex items-center gap-md">
-<div class="bg-surface-container-lowest px-sm py-1 rounded border border-outline-variant flex items-center gap-xs price-flash-up">
-<span class="font-data-ticker text-data-ticker text-secondary">XAUUSD 2042.50 ▲</span>
+<header class="bg-surface-container border-b border-surface-variant flex justify-between items-center px-6 w-full h-16 shrink-0">
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-lowest px-3 py-1 rounded border border-outline-variant flex items-center gap-2 price-flash-up">
+<span id="live-price-ticker" class="font-mono font-bold text-secondary">XAUUSD 2042.50 ▲</span>
 </div>
-<div class="flex items-center gap-xs">
+<div class="flex items-center gap-2">
 <span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
-<span class="font-label-caps text-label-caps text-on-surface-variant">Market Open</span>
+<span class="text-xs font-mono text-on-surface-variant">Market Open</span>
 </div>
 </div>
-</div>
-<div class="flex items-center gap-md">
-<div class="flex items-center gap-sm">
-<button class="bg-primary-container text-on-primary-container px-md py-1.5 rounded font-bold font-label-caps text-label-caps hover:brightness-110 active:scale-98 duration-150">Deposit</button>
-<button class="border border-outline text-on-surface px-md py-1.5 rounded font-bold font-label-caps text-label-caps hover:bg-surface-variant active:scale-98 duration-150">Withdraw</button>
-</div>
-<div class="h-6 w-px bg-surface-variant mx-xs"></div>
-<div class="flex items-center gap-sm">
-<button class="text-on-surface-variant hover:text-primary transition-all active:scale-98">
-<span class="material-symbols-outlined">notifications</span>
+<div class="flex items-center gap-4">
+<button onclick="toggleAdminTerminal()" class="bg-surface-container-highest border border-surface-variant text-primary px-3 py-1.5 rounded text-xs font-bold font-mono hover:bg-surface-bright flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">terminal</span> Admin Panel
 </button>
-<button class="text-on-surface-variant hover:text-primary transition-all active:scale-98">
-<span class="material-symbols-outlined">account_balance_wallet</span>
-</button>
-</div>
-<img class="w-8 h-8 rounded-full border border-primary/20" data-alt="A professional trader avatar wearing a dark blazer, stylized in a clean 3D character design, conveying authority and focus. The background is a minimalist grey, fitting the premium financial dashboard aesthetic. Lighting is sharp and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3ho94ulfdJrbaAQIJWqtuONFEc4I0Obinz3tV-jtlIIpRvf1L0hNBC0v5gx9RYfFqbQ3-5OuiZD9EIfdErRO4gGK9yo7DLWq6e_JFhQG3ktmXnHaGoRLVZwiPpFU7S5XTlV82IG5UnRAJ_zQ6fKy2MzM8MbkhpUyKZV01UDxOiVihPTNDOniaai0YuOri6Wt8HuSjsyle6LNnbVeNNDHbr6fbNQED6uZf153aCoWqjmu7Z9j-lM0qOsAbgLhDKTxtsqCZGlG3ZPU"/>
 </div>
 </header>
-<!-- Scrollable Dashboard Content -->
-<main class="flex-grow p-sm overflow-y-auto overflow-x-hidden space-y-sm">
-<!-- Dashboard Grid -->
-<div class="grid grid-cols-12 gap-sm h-[calc(100vh-280px)] min-h-[500px]">
-<!-- Main Chart Canvas (Left Column) -->
+
+<main class="flex-grow p-4 overflow-y-auto space-y-4">
+<div class="grid grid-cols-12 gap-4 h-[calc(100vh-280px)] min-h-[480px]">
 <section class="col-span-12 lg:col-span-8 glass-panel rounded-xl flex flex-col overflow-hidden">
-<div class="px-md py-sm border-b border-surface-variant flex justify-between items-center bg-surface-container-low/50">
-<div class="flex items-center gap-md">
-<h2 class="font-headline-sm text-[18px] text-primary flex items-center gap-xs">
-<span class="material-symbols-outlined filled-icon text-primary-container">show_chart</span>
-                                XAUUSD Real-Time
-                            </h2>
-<div class="flex gap-1">
-<button class="px-3 py-1 font-label-caps text-label-caps rounded bg-surface-container-highest text-primary">M1</button>
-<button class="px-3 py-1 font-label-caps text-label-caps rounded hover:bg-surface-container-highest text-on-surface-variant">M5</button>
-<button class="px-3 py-1 font-label-caps text-label-caps rounded hover:bg-surface-container-highest text-on-surface-variant">M15</button>
-<button class="px-3 py-1 font-label-caps text-label-caps rounded hover:bg-surface-container-highest text-on-surface-variant">H1</button>
+<div class="px-4 py-2 border-b border-surface-variant flex justify-between items-center bg-surface-container-low/50">
+<h2 class="text-sm font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined filled-icon text-primary-container">show_chart</span> XAUUSD Live Chart
+</h2>
 </div>
-</div>
-<div class="flex gap-sm">
-<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">fullscreen</span>
-<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">photo_camera</span>
-</div>
-</div>
-<div class="flex-grow relative bg-[#0D1117] overflow-hidden">
-<!-- Chart Mockup -->
-<div class="absolute inset-0 opacity-20 pointer-events-none">
-<div class="w-full h-full" style="background-image: linear-gradient(#30363D 1px, transparent 1px), linear-gradient(90deg, #30363D 1px, transparent 1px); background-size: 40px 40px;"></div>
-</div>
-<!-- Candlestick Visualization Wrapper -->
-<div class="w-full h-full flex items-center justify-center">
-<div class="w-full h-full bg-cover bg-center" data-alt="A sophisticated TradingView style candlestick chart for XAUUSD on a deep charcoal background. The candles are vibrant emerald green and crimson red, showing a bullish trend with clear wicks and bodies. Multiple technical indicators like EMA lines in gold and purple are overlaid. The UI is high-density and razor-sharp." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzV6xAHX5mEA9IhUAAABpSwmAaraA_p0P_YTG_4Hf86L8VaNGSeEIM4bTid0WjQF264tsp8xmFjEuis_OiHBYFd8WeJe9EixvDascuPda3s9FYA5CN-QmQWMFfZYhF5osO_WyV2hO1NqTfZ7o0Kr9g9Z-gH3aqU3kSwq4pQIeUK3Xcu8_hg2OkCYJQTHvZbEL6JaRfZ4T8L-Nm8dt9mCOPKYKGJT8y9HWS4kiRRNcTpej3jsa-Lk5P5AZ3uEVPwhHKK9aoVT-SWN0')"></div>
-</div>
-<!-- Float overlay data -->
-<div class="absolute top-4 left-4 p-xs bg-surface-container-highest/80 backdrop-blur rounded border border-outline-variant">
-<div class="grid grid-cols-2 gap-x-4 gap-y-1">
-<span class="font-label-caps text-[10px] text-on-surface-variant">O: <span class="text-on-surface font-data-ticker">2041.20</span></span>
-<span class="font-label-caps text-[10px] text-on-surface-variant">H: <span class="text-on-surface font-data-ticker">2044.80</span></span>
-<span class="font-label-caps text-[10px] text-on-surface-variant">L: <span class="text-on-surface font-data-ticker">2040.10</span></span>
-<span class="font-label-caps text-[10px] text-on-surface-variant">C: <span class="text-secondary font-data-ticker">2042.50</span></span>
-</div>
-</div>
+<div class="flex-grow relative bg-[#0D1117]">
+<div id="tradingview_chart" class="w-full h-full"></div>
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<script type="text/javascript">
+                        new TradingView.widget({
+                            "width": "100%",
+                            "height": "100%",
+                            "symbol": "OANDA:XAUUSD",
+                            "interval": "5",
+                            "timezone": "Etc/UTC",
+                            "theme": "dark",
+                            "style": "1",
+                            "locale": "en",
+                            "enable_publishing": false,
+                            "hide_side_toolbar": false,
+                            "allow_symbol_change": true,
+                            "container_id": "tradingview_chart"
+                        });
+                    </script>
 </div>
 </section>
-<!-- Live Signals Card-Feed (Right Column) -->
-<section class="col-span-12 lg:col-span-4 flex flex-col gap-sm overflow-hidden">
-<div class="flex items-center justify-between px-xs">
-<h3 class="font-headline-sm text-[18px] text-primary">Live Signals</h3>
-<span class="text-[12px] bg-secondary-container/20 text-secondary px-2 py-0.5 rounded font-bold">4 NEW</span>
+
+<section class="col-span-12 lg:col-span-4 flex flex-col gap-2 overflow-hidden">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-sm font-bold text-primary">Live Scalping Signals</h3>
+<span id="signal-count" class="text-xs bg-secondary-container/20 text-secondary px-2 py-0.5 rounded font-bold">LIVE STREAMING</span>
 </div>
-<div class="flex-grow overflow-y-auto space-y-sm pr-1">
-<!-- Signal Card 1 -->
-<div class="glass-panel rounded-xl p-md border-l-4 border-secondary">
-<div class="flex justify-between items-start mb-sm">
-<div>
-<h4 class="font-data-ticker text-primary text-[18px]">XAUUSD</h4>
-<span class="font-label-caps text-secondary font-extrabold text-[14px]">BUY SIGNAL</span>
-</div>
-<span class="font-label-caps text-on-surface-variant text-[10px]">2m ago</span>
-</div>
-<div class="grid grid-cols-2 gap-sm mb-md">
-<div class="bg-surface-container-lowest p-xs rounded">
-<p class="font-label-caps text-[10px] text-on-surface-variant">ENTRY</p>
-<p class="font-data-ticker text-on-surface">2042.50</p>
-</div>
-<div class="bg-surface-container-lowest p-xs rounded">
-<p class="font-label-caps text-[10px] text-on-surface-variant">STRATEGY</p>
-<p class="font-body-sm text-body-sm text-primary">EMA Cross + RSI</p>
-</div>
-<div class="bg-secondary-container/10 p-xs rounded border border-secondary/20">
-<p class="font-label-caps text-[10px] text-secondary">TP (Target)</p>
-<p class="font-data-ticker text-secondary">2055.00</p>
-</div>
-<div class="bg-error-container/10 p-xs rounded border border-error/20">
-<p class="font-label-caps text-[10px] text-error">SL (Stop)</p>
-<p class="font-data-ticker text-error">2034.00</p>
-</div>
-</div>
-<button class="w-full bg-secondary text-on-secondary-container py-xs rounded-lg font-bold font-label-caps hover:brightness-110 transition-all">Follow Signal</button>
-</div>
-<!-- Signal Card 2 -->
-<div class="glass-panel rounded-xl p-md border-l-4 border-error/50 opacity-80">
-<div class="flex justify-between items-start mb-sm">
-<div>
-<h4 class="font-data-ticker text-primary text-[18px]">XAUUSD</h4>
-<span class="font-label-caps text-error font-extrabold text-[14px]">SELL SIGNAL</span>
-</div>
-<span class="font-label-caps text-on-surface-variant text-[10px]">14m ago</span>
-</div>
-<div class="grid grid-cols-2 gap-sm mb-md">
-<div class="bg-surface-container-lowest p-xs rounded">
-<p class="font-label-caps text-[10px] text-on-surface-variant">ENTRY</p>
-<p class="font-data-ticker text-on-surface">2048.20</p>
-</div>
-<div class="bg-surface-container-lowest p-xs rounded">
-<p class="font-label-caps text-[10px] text-on-surface-variant">STRATEGY</p>
-<p class="font-body-sm text-body-sm text-primary">Price Action</p>
-</div>
-</div>
-<button class="w-full border border-outline text-on-surface py-xs rounded-lg font-bold font-label-caps hover:bg-surface-variant">View Details</button>
-</div>
-<!-- Signal Card 3 -->
-<div class="glass-panel rounded-xl p-md border-l-4 border-secondary">
-<div class="flex justify-between items-start mb-sm">
-<div>
-<h4 class="font-data-ticker text-primary text-[18px]">XAUUSD</h4>
-<span class="font-label-caps text-secondary font-extrabold text-[14px]">BUY SIGNAL</span>
-</div>
-<span class="font-label-caps text-on-surface-variant text-[10px]">1h ago</span>
-</div>
-<button class="w-full bg-secondary text-on-secondary-container py-xs rounded-lg font-bold font-label-caps hover:brightness-110 transition-all">Follow Signal</button>
+<div id="signals-container" class="flex-grow overflow-y-auto space-y-3 pr-1">
+<div class="glass-panel rounded-xl p-4 border-l-4 border-surface-variant text-center text-on-surface-variant">
+Waiting for system scan signals...
 </div>
 </div>
 </section>
 </div>
-<!-- Recent Trade History (Bottom Section) -->
+
 <section class="glass-panel rounded-xl overflow-hidden">
-<div class="px-md py-sm border-b border-surface-variant flex justify-between items-center bg-surface-container-low/50">
-<h3 class="font-headline-sm text-[18px] text-primary">Recent Trade History</h3>
-<button class="font-label-caps text-[12px] text-primary-container hover:underline">View All History</button>
+<div class="px-4 py-2 border-b border-surface-variant bg-surface-container-low/50">
+<h3 class="text-sm font-bold text-primary">Closed Trades History Log</h3>
 </div>
 <div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
+<table class="w-full text-left border-collapse text-xs">
 <thead class="bg-surface-container-low">
 <tr>
-<th class="px-md py-3 font-label-caps text-[10px] text-on-surface-variant border-b border-surface-variant">DATE/TIME</th>
-<th class="px-md py-3 font-label-caps text-[10px] text-on-surface-variant border-b border-surface-variant">ASSET</th>
-<th class="px-md py-3 font-label-caps text-[10px] text-on-surface-variant border-b border-surface-variant">TYPE</th>
-<th class="px-md py-3 font-label-caps text-[10px] text-on-surface-variant border-b border-surface-variant">ENTRY</th>
-<th class="px-md py-3 font-label-caps text-[10px] text-on-surface-variant border-b border-surface-variant">EXIT</th>
-<th class="px-md py-3 font-label-caps text-[10px] text-on-surface-variant border-b border-surface-variant text-right">PROFIT/LOSS</th>
+<th class="p-3 font-mono text-on-surface-variant">TIME</th>
+<th class="p-3 font-mono text-on-surface-variant">ASSET</th>
+<th class="p-3 font-mono text-on-surface-variant">TYPE</th>
+<th class="p-3 font-mono text-on-surface-variant">ENTRY</th>
+<th class="p-3 font-mono text-on-surface-variant">TP / SL</th>
+<th class="p-3 font-mono text-on-surface-variant text-right">STATUS</th>
 </tr>
 </thead>
-<tbody class="font-body-sm text-body-sm">
-<tr class="hover:bg-surface-container-highest/30 transition-colors border-b border-surface-variant/30">
-<td class="px-md py-3 text-on-surface-variant">2023-11-24 14:20</td>
-<td class="px-md py-3 text-primary font-bold">XAUUSD</td>
-<td class="px-md py-3"><span class="text-secondary font-bold">BUY</span></td>
-<td class="px-md py-3 font-data-ticker">2038.50</td>
-<td class="px-md py-3 font-data-ticker">2042.10</td>
-<td class="px-md py-3 text-right">
-<span class="bg-secondary-container/20 text-secondary px-2 py-0.5 rounded font-bold font-data-ticker">+36 Pips</span>
-</td>
-</tr>
-<tr class="hover:bg-surface-container-highest/30 transition-colors border-b border-surface-variant/30">
-<td class="px-md py-3 text-on-surface-variant">2023-11-24 11:05</td>
-<td class="px-md py-3 text-primary font-bold">XAUUSD</td>
-<td class="px-md py-3"><span class="text-error font-bold">SELL</span></td>
-<td class="px-md py-3 font-data-ticker">2045.20</td>
-<td class="px-md py-3 font-data-ticker">2047.80</td>
-<td class="px-md py-3 text-right">
-<span class="bg-error-container/20 text-error px-2 py-0.5 rounded font-bold font-data-ticker">-26 Pips</span>
-</td>
-</tr>
-<tr class="hover:bg-surface-container-highest/30 transition-colors">
-<td class="px-md py-3 text-on-surface-variant">2023-11-23 20:45</td>
-<td class="px-md py-3 text-primary font-bold">XAUUSD</td>
-<td class="px-md py-3"><span class="text-secondary font-bold">BUY</span></td>
-<td class="px-md py-3 font-data-ticker">2030.10</td>
-<td class="px-md py-3 font-data-ticker">2045.50</td>
-<td class="px-md py-3 text-right">
-<span class="bg-secondary-container/20 text-secondary px-2 py-0.5 rounded font-bold font-data-ticker">+154 Pips</span>
-</td>
+<tbody id="history-table-body">
+<tr class="border-b border-surface-variant/30 hover:bg-surface-container-highest/20">
+<td class="p-3 text-on-surface-variant">Just Now</td>
+<td class="p-3 text-primary font-bold">XAUUSD</td>
+<td class="p-3 text-secondary font-bold">BUY</td>
+<td class="p-3 font-mono">2041.50</td>
+<td class="p-3 font-mono">2045.50 / 2039.50</td>
+<td class="p-3 text-right"><span class="bg-secondary-container/20 text-secondary px-2 py-0.5 rounded font-bold">+40 Pips</span></td>
 </tr>
 </tbody>
 </table>
@@ -389,95 +179,109 @@
 </section>
 </main>
 </div>
-<!-- Admin Terminal (SideNavBar Right) - System Control Mockup -->
-<aside class="hidden xl:flex bg-surface-container-high border-l border-surface-variant flex flex-col h-screen w-64 fixed right-0 top-0 shadow-lg z-40 transition-transform transform translate-x-0">
-<div class="flex flex-col h-full py-md px-sm">
-<div class="mb-lg flex items-center gap-sm">
-<img class="w-10 h-10 rounded border border-tertiary-container" data-alt="A minimalist tech identicon for a system administrator, utilizing high-contrast gold and slate tones. The design is geometric and sharp, conveying high-level access and security in a fintech context. Lighting is flat and digital." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC39RO8HF3xk6T25Ly5lWDPt7tp9LlQ6lCsgkLV0ZSSVkqLq3YnqiwmyCs6C9VJRMDoBgyxV6WfW2K8KHIR60jGbw5V681Mnq20Ra6NHZ-xx_At8E9BYxnspuoYpWyxauJECy_zGPDOcFLUcIC49R3fV7pfY13Og9Knkw4YZGAFwsO_Tab3brclVJV9I08gTVTCGuLcf0Zz4LEARUXOtZhcrct3CRThS_Nswpu_Z3uh0RscEAPfBp88izOCXpjyEejDIupttDtnZ70"/>
+
+<aside id="admin-terminal" class="hidden bg-surface-container-highest border-l border-surface-variant flex flex-col h-screen w-80 fixed right-0 top-0 shadow-2xl z-50 p-4">
+<div class="flex justify-between items-center mb-6 border-b border-surface-variant pb-2">
+<h3 class="text-md font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined">shield</span> Admin Configuration
+</h3>
+<button onclick="toggleAdminTerminal()" class="text-on-surface-variant hover:text-error">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="space-y-4 flex-grow text-xs">
 <div>
-<h3 class="font-headline-sm text-[16px] text-tertiary-container">Admin Terminal</h3>
-<p class="font-body-sm text-[11px] text-on-surface-variant">System Control Active</p>
+<label class="block text-on-surface-variant font-mono mb-1">AI API Provider</label>
+<select id="api-provider" class="w-full bg-background border border-surface-variant rounded p-2 text-primary focus:outline-none focus:border-secondary">
+<option value="gemini">Google Gemini 1.5 Pro</option>
+<option value="openai">OpenAI GPT-4o</option>
+</select>
 </div>
+<div>
+<label class="block text-on-surface-variant font-mono mb-1">Secret API Key</label>
+<input id="api-key-input" type="password" placeholder="sk-..." class="w-full bg-background border border-surface-variant rounded p-2 text-primary focus:outline-none focus:border-secondary font-mono"/>
 </div>
-<nav class="space-y-sm flex-grow">
-<a class="flex items-center gap-sm px-sm py-xs bg-tertiary-container text-on-tertiary-container rounded-lg font-bold active:scale-95 duration-100" href="#">
-<span class="material-symbols-outlined filled-icon">api</span>
-<span class="font-body-sm text-body-sm">API Management</span>
-</a>
-<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
-<span class="material-symbols-outlined">settings_input_component</span>
-<span class="font-body-sm text-body-sm">Signal Control</span>
-</a>
-<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
-<span class="material-symbols-outlined">monitoring</span>
-<span class="font-body-sm text-body-sm">Performance</span>
-</a>
-</nav>
-<div class="mt-auto p-sm bg-surface-container-lowest rounded-lg border border-outline-variant">
-<div class="flex justify-between items-center mb-xs">
-<span class="font-label-caps text-[9px] text-on-surface-variant uppercase">Server Load</span>
-<span class="text-secondary font-data-ticker text-[10px]">12ms</span>
-</div>
-<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
-<div class="bg-secondary h-full w-[24%]"></div>
-</div>
-</div>
+<button onclick="saveAdminSettings()" class="w-full bg-secondary text-on-secondary font-bold p-2 rounded hover:brightness-110 transition-all">
+Save Configurations
+</button>
 </div>
 </aside>
-<script>
-        // Micro-interactions for price flash
-        setInterval(() => {
-            const priceEl = document.querySelector('.price-flash-up');
-            const chance = Math.random();
-            if (chance > 0.8) {
-                priceEl.classList.add('brightness-125');
-                setTimeout(() => priceEl.classList.remove('brightness-125'), 300);
-            }
-        }, 3000);
-        // បង្កើតការភ្ជាប់ទៅកាន់ Backend Server ពិតៗ
-const socket = new WebSocket(`ws://${window.location.host}`);
 
-socket.onmessage = function(event) {
-    const data = JSON.parse(event.data);
-    
-    // ១. ធ្វើបច្ចុប្បន្នភាពតម្លៃមាសនៅលើ Header លឿនៗ
-    const priceTicker = document.querySelector('.price-flash-up span');
-    if (priceTicker) {
-        priceTicker.innerHTML = `XAUUSD ${data.price.toFixed(2)} ${data.signal === 'BUY' ? '▲' : '▼'}`;
-        // ប្តូរពណ៌ទៅតាមសញ្ញាឡើងចុះ
-        if (data.signal === 'BUY') {
-            priceTicker.className = "font-data-ticker text-data-ticker text-secondary";
-        } else if (data.signal === 'SELL') {
-            priceTicker.className = "font-data-ticker text-data-ticker text-error";
+<script>
+    // 1. WebSocket Live Price & Signals Real-time Sync
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const socket = new WebSocket(`${protocol}//${window.location.host}`);
+
+    socket.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+        
+        // Update Price Ticker Live
+        const priceTicker = document.getElementById('live-price-ticker');
+        if (priceTicker && data.price) {
+            priceTicker.innerHTML = `XAUUSD ${data.price.toFixed(2)} ${data.signal === 'BUY' ? '▲' : data.signal === 'SELL' ? '▼' : '◆'}`;
+            if (data.signal === 'BUY') priceTicker.className = "font-mono font-bold text-secondary";
+            else if (data.signal === 'SELL') priceTicker.className = "font-mono font-bold text-error";
+            else priceTicker.className = "font-mono font-bold text-primary";
+        }
+
+        // Handle Live Automated Signal Card Generation
+        if (data.signal === "BUY" || data.signal === "SELL") {
+            const container = document.getElementById('signals-container');
+            const borderColors = data.signal === 'BUY' ? 'border-secondary' : 'border-error';
+            const badgeColors = data.signal === 'BUY' ? 'text-secondary' : 'text-error';
+            const btnColors = data.signal === 'BUY' ? 'bg-secondary text-on-secondary' : 'bg-error-container text-error border border-error/30';
+
+            const cardHTML = `
+                <div class="glass-panel rounded-xl p-4 border-l-4 ${borderColors} animate-pulse">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="font-mono text-primary text-md">XAUUSD</h4>
+                            <span class="text-xs font-mono font-extrabold ${badgeColors}">${data.signal} SIGNAL</span>
+                        </div>
+                        <span class="text-[10px] text-on-surface-variant font-mono">${data.time}</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-xs">
+                        <div class="bg-background p-1.5 rounded"><p class="text-[9px] text-on-surface-variant">ENTRY</p><p class="font-mono font-bold text-primary">${data.price}</p></div>
+                        <div class="bg-background p-1.5 rounded"><p class="text-[9px] text-on-surface-variant">RSI MOMENTUM</p><p class="font-mono text-primary">${data.rsi || 50}</p></div>
+                        <div class="bg-secondary-container/10 p-1.5 rounded border border-secondary/20"><p class="text-[9px] text-secondary">TP TARGET</p><p class="font-mono font-bold text-secondary">${data.tp}</p></div>
+                        <div class="bg-error-container/10 p-1.5 rounded border border-error/20"><p class="text-[9px] text-error">STOP LOSS</p><p class="font-mono font-bold text-error">${data.sl}</p></div>
+                    </div>
+                    <button class="w-full ${btnColors} py-1.5 rounded font-bold text-xs font-mono hover:brightness-110">Execute Position</button>
+                </div>
+            `;
+            // clear static info if any
+            if(container.innerHTML.includes("Waiting for system scan")) container.innerHTML = '';
+            container.innerHTML = cardHTML + container.innerHTML; // Prepend new signals
+        }
+    };
+
+    // 2. Admin Settings Control
+    function toggleAdminTerminal() {
+        const adminPanel = document.getElementById('admin-terminal');
+        adminPanel.classList.toggle('hidden');
+    }
+
+    function saveAdminSettings() {
+        const provider = document.getElementById('api-provider').value;
+        const apiKey = document.getElementById('api-key-input').value;
+        
+        // Save to browser memory localstorage securely
+        localStorage.setItem('AI_PROVIDER', provider);
+        localStorage.setItem('AI_API_KEY', apiKey);
+        
+        alert('🎯 API Configurations saved successfully to environment!');
+        toggleAdminTerminal();
+    }
+
+    // Load setup on initial start
+    window.onload = function() {
+        if(localStorage.getItem('AI_PROVIDER')) {
+            document.getElementById('api-provider').value = localStorage.getItem('AI_PROVIDER');
+        }
+        if(localStorage.getItem('AI_API_KEY')) {
+            document.getElementById('api-key-input').value = localStorage.getItem('AI_API_KEY');
         }
     }
-
-    // ២. ប្រសិនបើមានសញ្ញា BUY ឬ SELL ថ្មី វានឹងរុញទៅកាត Live Signals
-    if (data.signal === "BUY" || data.signal === "SELL") {
-        console.log("New Scalping Signal Received:", data);
-        // អ្នកអាចសរសេរកូដ Append Card HTML ចូលទៅក្នុងតំបន់ <section class="col-span-4"> បានយ៉ាងងាយស្រួលនៅទីនេះ
-    }
-};
-
-
-        // Sidebar active state logic for the dashboard page
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                // If this were a real router, we'd navigate. 
-                // For this demo, let's just toggle active classes within the same nav.
-                const parent = link.parentElement;
-                parent.querySelectorAll('a').forEach(l => {
-                    l.classList.remove('text-primary', 'border-r-2', 'border-primary', 'bg-tertiary-container', 'text-on-tertiary-container', 'rounded-lg', 'font-bold');
-                    l.classList.add('text-on-surface-variant');
-                });
-                
-                if (parent.closest('aside').classList.contains('right-0')) {
-                    link.classList.add('bg-tertiary-container', 'text-on-tertiary-container', 'rounded-lg', 'font-bold');
-                } else {
-                    link.classList.add('text-primary', 'border-r-2', 'border-primary');
-                }
-                link.classList.remove('text-on-surface-variant');
-            });
-        });
-    </script>
-</body></html>
+</script>
+</body>
+</html>
