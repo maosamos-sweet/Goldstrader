@@ -1,0 +1,14 @@
+{
+  "name": "goldtrader",
+  "version": "1.0.0",
+  "description": "GoldPulse AI Trading Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "technicalindicators": "^3.1.0",
+    "ws": "^8.16.0"
+  }
+}
