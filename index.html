@@ -434,6 +434,31 @@
                 setTimeout(() => priceEl.classList.remove('brightness-125'), 300);
             }
         }, 3000);
+        // បង្កើតការភ្ជាប់ទៅកាន់ Backend Server ពិតៗ
+const socket = new WebSocket(`ws://${window.location.host}`);
+
+socket.onmessage = function(event) {
+    const data = JSON.parse(event.data);
+    
+    // ១. ធ្វើបច្ចុប្បន្នភាពតម្លៃមាសនៅលើ Header លឿនៗ
+    const priceTicker = document.querySelector('.price-flash-up span');
+    if (priceTicker) {
+        priceTicker.innerHTML = `XAUUSD ${data.price.toFixed(2)} ${data.signal === 'BUY' ? '▲' : '▼'}`;
+        // ប្តូរពណ៌ទៅតាមសញ្ញាឡើងចុះ
+        if (data.signal === 'BUY') {
+            priceTicker.className = "font-data-ticker text-data-ticker text-secondary";
+        } else if (data.signal === 'SELL') {
+            priceTicker.className = "font-data-ticker text-data-ticker text-error";
+        }
+    }
+
+    // ២. ប្រសិនបើមានសញ្ញា BUY ឬ SELL ថ្មី វានឹងរុញទៅកាត Live Signals
+    if (data.signal === "BUY" || data.signal === "SELL") {
+        console.log("New Scalping Signal Received:", data);
+        // អ្នកអាចសរសេរកូដ Append Card HTML ចូលទៅក្នុងតំបន់ <section class="col-span-4"> បានយ៉ាងងាយស្រួលនៅទីនេះ
+    }
+};
+
 
         // Sidebar active state logic for the dashboard page
         document.querySelectorAll('nav a').forEach(link => {
